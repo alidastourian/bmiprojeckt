@@ -1,0 +1,51 @@
+from  tkinter import *
+
+from tkinter import messagebox
+
+form= Tk()
+form.title("BMI CALCULATOR")
+form.configure(bg="#0c3142")
+form.geometry(("%dx%d+%d+%d")%(350,250,200,200))
+form.resizable(False,False)
+
+#DEF
+def bmi(e):
+    height=float(txt1.get())
+    weight=float(txt2.get())
+    bmi=((height-100)-((height-150)/4))
+    if  weight < bmi:
+        messagebox.showerror("Weight Deficit",str(bmi))
+    elif weight> bmi:
+        messagebox.showerror("OverWeight",str(bmi))
+    else:
+        messagebox.showinfo("HEALTHY")
+
+#txt
+txt1=Entry(form)
+
+txt1.place(x=110,y=31)
+
+txt2=Entry(form)
+
+txt2.place(x=115,y=91)
+
+#lbl
+lbl1=Label(form,text="HEIGHT",bg="#f0c888",fg="#0c3142")
+lbl1.configure(font="arial 9 bold")
+lbl1.place(x=55,y=30)
+
+lbl2=Label(form,text="WEIGHT",bg="#f0c888",fg="#0c3142")
+lbl2.configure(font="arial 9 bold")
+lbl2.place(x=55,y=91)
+
+#btn1
+btn1=Button(form,text="Calculate it",bg="#f0c888",fg="#0c3142",width=10,height=2)
+btn1.configure(font="arial")
+btn1.bind("<Button-1>",bmi)
+btn1.place(x=115,y=151)
+
+
+
+
+
+form.mainloop()
